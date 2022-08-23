@@ -7,5 +7,5 @@ def uppercase(str):
         if i == len(str) - 1:
             print(f"{char}")
         else:
-            print("{char}", end = '')
-        i = i + 1 
+            print("{char}", end='')
+        i = i + 1
