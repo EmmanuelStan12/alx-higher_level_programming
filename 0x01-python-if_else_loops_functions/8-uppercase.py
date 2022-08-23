@@ -5,7 +5,7 @@ def uppercase(str):
         if value >= 97 and value <= 122:
             char = chr(value - 32)
         if i == len(str) - 1:
-            print(char)
+            print(f"{char}")
         else:
-            print(char, end = '')
+            print("{char}", end = '')
         i = i + 1 
