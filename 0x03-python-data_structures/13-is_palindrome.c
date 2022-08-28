@@ -7,16 +7,16 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *current = NULL, *last_element, *first_element;
+	listint_t *current, *last_element, *first_element;
 	int size = 0, i = 0;
 
-	if (head == NULL)
+	if (!head)
 		return (0);
 	current = *head;
-	if (current == NULL)
+	if (!current)
 		return (1);
 	size = 1;
-	while (current->next != NULL)
+	while (current->next)
 	{
 		current = current->next;
 		size++;
