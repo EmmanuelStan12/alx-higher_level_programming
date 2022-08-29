@@ -4,5 +4,6 @@ def print_matrix_integer(matrix=[[]]):
         for i in range(len(list)):
             space = ' '
             if i == len(list) - 1:
-                space = '\n'
+                space = ''
             print("{:d}".format(list[i]), end=space)
+        print("")

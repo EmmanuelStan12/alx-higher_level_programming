@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 def max_integer(my_list=[]):
-    max = float('-inf')
-    for num in my_list:
-        if num > max:
-            max = num
-    return max
+    if not my_list or len(my_list) == 0:
+        return None
+    return sorted(my_list)[-1]
