@@ -55,7 +55,6 @@ class SinglyLinkedList:
     """
     def __init__(self):
         self.__head = None
-        self.__size = 0
 
     def sorted_insert(self, value):
         """value: the value to insert
@@ -64,7 +63,6 @@ class SinglyLinkedList:
         head = self.__head
         if head is None:
             self.__head = Node(value)
-            self.__size += 1
         elif head.data >= value:
             current = self.__head
             new_node = Node(value, current)
