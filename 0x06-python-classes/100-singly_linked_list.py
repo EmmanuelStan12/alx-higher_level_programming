@@ -49,6 +49,7 @@ class Node:
         else:
             self.__next_node = value
 
+
 class SinglyLinkedList:
     """
     Singly Sorted linked list

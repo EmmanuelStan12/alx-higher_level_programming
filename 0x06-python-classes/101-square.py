@@ -3,6 +3,7 @@
 """This module describes a Square class and it's functionality
 """
 
+
 class Square:
     """
     Note:
@@ -18,6 +19,10 @@ class Square:
         if type(position) is not tuple:
             raise TypeError("position must be a tuple of 2 positive integers")
         elif type(position) is tuple and len(position) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif all(not isinstance(el, int) for el in position):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif all(el < 0 for el in position):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = position
@@ -54,11 +59,7 @@ class Square:
         for i in range(y):
             print()
         for i in range(self.__size):
-            for k in range(x):
-                print(' ', end='')
-            for j in range(self.__size):
-                print("#", end='')
-            print()
+            print(' ' * x + '#' * self.__size)
 
     @property
     def position(self):
@@ -72,12 +73,16 @@ class Square:
             raise TypeError("position must be a tuple of 2 positive integers")
         elif type(value) is not tuple:
             raise TypeError("position must be a tuple of 2 positive integers")
+        elif all(not isinstance(el, int) for el in value):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif all(el < 0 for el in value):
+            raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
 
     def __str__(self):
-        """returns the square with '#' characters"""
-        s = ""
+        """prints the square with '#' characters"""
+        s = ''
         if self.__size == 0:
             s += '\n'
             return s
@@ -86,10 +91,7 @@ class Square:
         for i in range(y):
             s += '\n'
         for i in range(self.__size):
-            for k in range(x):
-                s += ' '
-            for j in range(self.__size):
-                s += '#'
+            s += ' ' * x + '#' * self.__size
             if i < self.__size - 1:
                 s += '\n'
         return s
