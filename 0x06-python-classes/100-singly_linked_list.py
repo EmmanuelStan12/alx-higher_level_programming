@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 
-"""This module describes a Singly linked list and it's functionality
 """
+This module describes a Singly linked list and it's functionality
+"""
+
 
 class Node:
     """
-    Sorted singly linked list
+    Node of a list
     """
     def __init__(self, data, next_node=None):
         if type(data) is not int:
@@ -35,16 +37,14 @@ class Node:
             self.__data = value
 
     @property
-    """defines the next node property
-    """
     def next_node(self):
+        """the next node"""
         return self.__next_node
 
     @next_node.setter
-    """value: the next node
-    """
     def next_node(self, value):
-        if not isinstance(value, Node):
+        """next node setter"""
+        if value is not None and not isinstance(value, Node):
             raise TypeError("next_node must be a Node object")
         else:
             self.__next_node = value
