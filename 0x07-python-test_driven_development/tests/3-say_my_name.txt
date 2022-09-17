@@ -1,0 +1,35 @@
+This library is very simple, since it only has one function called
+``say_my_name``.
+
+``say_my_name`` prints a formatted text for a given first and last name.
+
+::
+
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+>>> say_my_name("Jason", "Stanley")
+My name is Jason, Stanley
+
+>>> say_my_name("Jason", "   ")
+My name is Jason 
+
+>>> say_my_name("   ", "Stanley")
+My name is Stanley
+
+Invalid type for inputs
+=======================
+
+Because the function only demands strings as input for both first and last names it raises a type exception if it encounters another type of any other argument.
+
+>>> say_my_name("Jason", ["nice"])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/codedev/Projects/alx-higher_level_programming/0x07-python-test_driven_development/3-say_my_name.py", line 16, in say_my_name
+    raise TypeError("last_name must be a string")
+TypeError: last_name must be a string
+
+>>> say_my_name(2, "Stanley")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/codedev/Projects/alx-higher_level_programming/0x07-python-test_driven_development/3-say_my_name.py", line 14, in say_my_name
+    raise TypeError("first_name must be a string")
+TypeError: first_name must be a string
