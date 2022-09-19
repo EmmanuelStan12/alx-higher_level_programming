@@ -56,8 +56,10 @@ class Rectangle:
     def __str__(self):
         """prints the rectangle with '#' sign"""
         rect = ''
+        if self.height == 0 or self.width == 0:
+            return rect
         for i in range(self.height):
-            rect += self.width * '#'
+            rect += ('#' * self.width)
             if i != self.height - 1:
                 rect += '\n'
         return rect
