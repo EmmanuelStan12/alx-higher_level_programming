@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module has a class that prevents the user from creating certain attributes
+This module has a class that prevents the user from 
+creating certain attributes
 """
 
 
