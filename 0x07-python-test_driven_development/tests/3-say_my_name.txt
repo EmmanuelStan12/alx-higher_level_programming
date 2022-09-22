@@ -7,9 +7,12 @@ This library is very simple, since it only has one function called
 
 >>> say_my_name = __import__('3-say_my_name').say_my_name
 >>> say_my_name("Jason", "Stanley")
-My name is Jason, Stanley
+My name is Jason Stanley
 
 >>> say_my_name("Jason", "   ")
+My name is Jason 
+
+>>> say_my_name("Jason")
 My name is Jason 
 
 >>> say_my_name("   ", "Stanley")

@@ -9,7 +9,7 @@ def say_my_name(first_name, last_name=""):
     """
     this function prints out your name in a given format
     """
-    sep = ", "
+    sep = " "
     if type(first_name) != str:
         raise TypeError("first_name must be a string")
     if type(last_name) != str:
