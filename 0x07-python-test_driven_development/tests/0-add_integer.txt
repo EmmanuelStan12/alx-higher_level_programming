@@ -24,6 +24,16 @@ It also works with floating-point values.
 >>> add_integer(2.0, 3)
 5
 
+It also works when you try to add two infinity values
+
+>>> add_integer(float('inf'), float('inf'))
+89
+
+It also accepts Non numbers
+
+>>> add_integer(float('nan'), float('nan'))
+178
+
 Non-Numbers
 ===========
 
