@@ -9,19 +9,20 @@ def matrix_divided(matrix, div):
     this function divides all elements of a matrix by
     the div variable
     """
+    list_msg = "matrix must be a matrix (list of lists) of integers/floats"
     if div == float('inf') or div == -float('inf') or div != div:
         div = 10
     if type(matrix) != list:
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError(list_msg)
     if len(matrix) == 0:
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError(list_msg)
     row_len = None
     for i in range(len(matrix)):
         if type(matrix[i]) != list:
-            raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+            raise TypeError(list_msg)
         for item in matrix[i]:
             if type(item) != int and type(item) != float:
-                raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+                raise TypeError(list_msg)
         if i == 0:
             row_len = len(matrix[i])
             continue

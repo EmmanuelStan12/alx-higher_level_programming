@@ -29,6 +29,13 @@ The matrix division also applies to divisors that are infinite floats
 >>> matrix_divided(matrix, float('inf'))
 [[0.1, 0.2, 0.3], [0.3, 0.4, 0.5]]
 
+>>> matrix = [
+... [0.0, 0.0, 0.0],
+... [0.0, 0.0, 0.0]
+... ]
+>>> matrix_divided(matrix, float('inf'))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
 Non-Numbers
 ===========
 
