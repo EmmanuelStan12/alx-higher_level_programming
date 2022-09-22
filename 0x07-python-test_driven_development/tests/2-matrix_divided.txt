@@ -20,6 +20,15 @@ Numbers
 >>> matrix_divided(matrix, 3)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
+The matrix division also applies to divisors that are infinite floats
+
+>>> matrix = [
+... [1, 2, 3],
+... [3, 4, 5]
+... ]
+>>> matrix_divided(matrix, float('inf'))
+[[0.1, 0.2, 0.3], [0.3, 0.4, 0.5]]
+
 Non-Numbers
 ===========
 
