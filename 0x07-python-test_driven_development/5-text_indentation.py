@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-this module has a function that does some text indentation a special characters.
+this module has a function that does some text indentation
+a special characters.
 """
 
 

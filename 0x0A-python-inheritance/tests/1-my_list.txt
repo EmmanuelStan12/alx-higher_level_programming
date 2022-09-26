@@ -1,12 +1,12 @@
 ===============================
-	MyList
+MyList - Checks a list
 ===============================
 
 This library is very simple, since it only has one function called
-print_sorted().
+``print_sorted()``.
 
 List of Integers
-=======
+================
 
 Test Case 1
 
