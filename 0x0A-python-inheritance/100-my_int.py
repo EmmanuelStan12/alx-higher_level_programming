@@ -4,12 +4,12 @@ from int"""
 
 
 class MyInt(int):
-    """This class inherits from int class"""
+    """This class inherits from directly from the int class"""
 
     def __eq__(self, other):
-        """equality operator for int"""
+        """checks for equality operator for the int class"""
         return self.real != other
 
     def __ne__(self, other):
-        """not equal operator for int"""
+        """checks for none equality operator for int class"""
         return self.real == other
