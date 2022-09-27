@@ -9,7 +9,7 @@ def append_after(filename="", search_string="", new_string=""):
         data = f.readlines()
 
     for i in range(len(data)):
-        if data[i].find(search_string) != -1:
+        if search_string in data[i]:
             data.insert(i + 1, new_string)
 
     with open(filename, mode='w', encoding='utf-8') as f:
