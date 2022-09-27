@@ -41,3 +41,42 @@ Traceback (most recent call last):
   File "/home/codedev/Projects/alx-higher_level_programming/0x0A-python-inheritance/7-base_geometry.py", line 15, in integer_validator
     raise TypeError("{} must be an integer".format(name))
 TypeError: float must be an integer
+
+Test Case 4
+
+>>> bg.area()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/codedev/Projects/alx-higher_level_programming/0x0A-python-inheritance/7-base_geometry.py", line 10, in area
+    raise Exception("area() is not implemented")
+Exception: area() is not implemented
+
+Test Case 5
+>>> bg.integer_validator("value", 20)
+
+Test Case 6
+
+>>> bg.integer_validator("value", 0)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/codedev/Projects/alx-higher_level_programming/0x0A-python-inheritance/7-base_geometry.py", line 17, in integer_validator
+    raise ValueError("{} must be greater than 0".format(name))
+ValueError: value must be greater than 0
+
+Test Case 7
+
+>>> bg.integer_validator("value", (4, ))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/codedev/Projects/alx-higher_level_programming/0x0A-python-inheritance/7-base_geometry.py", line 15, in integer_validator
+    raise TypeError("{} must be an integer".format(name))
+TypeError: value must be an integer
+
+Test Case 8
+
+>>> bg.integer_validator("value", None)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/codedev/Projects/alx-higher_level_programming/0x0A-python-inheritance/7-base_geometry.py", line 15, in integer_validator
+    raise TypeError("{} must be an integer".format(name))
+TypeError: value must be an integer
