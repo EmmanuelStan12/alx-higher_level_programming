@@ -3,7 +3,6 @@
 Instance of a class to dictionary"""
 
 
-
 def class_to_json(obj):
     """this function converts an instance of a class to
     a dictionary"""

@@ -10,8 +10,3 @@ def load_from_json_file(filename):
     str = ""
     with open(filename, encoding='utf-8') as f:
         return json.load(f)
-    #try:
-    #    result = json.loads(str)
-    #except Exception as e:
-    #    raise ValueError(e)
-    #return result

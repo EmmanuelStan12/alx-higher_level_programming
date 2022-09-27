@@ -13,7 +13,7 @@ def pascal_triangle(n):
         elif i == 1:
             result.append([1, 1])
             continue
-        prev_list = result[i - 1];
+        prev_list = result[i - 1]
         row = [1]
         for j in range(len(prev_list)):
             if (j + 1) != len(prev_list):
