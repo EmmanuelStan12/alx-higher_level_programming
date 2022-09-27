@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """This module contains a class MyInt that inherits
-from int
+int class
 """
 
 
 class MyInt(int):
-    """This class inherits from directly from the int class"""
+    """This class inherits directly the int class"""
 
     def __eq__(self, other):
         """checks for equality operator for the int class"""
