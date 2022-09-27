@@ -9,10 +9,9 @@ def load_from_json_file(filename):
     """this function creats an object from a file"""
     str = ""
     with open(filename, encoding='utf-8') as f:
-        for line in f:
-            str += line.rstrip().lstrip()
-    try:
-        result = json.loads(str)
-    except Exception as e:
-        raise ValueError(e)
-    return result
+        return json.load(f)
+    #try:
+    #    result = json.loads(str)
+    #except Exception as e:
+    #    raise ValueError(e)
+    #return result

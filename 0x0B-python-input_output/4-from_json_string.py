@@ -7,8 +7,8 @@ import json
 
 def from_json_string(my_str):
     """this function that converts a string a pyObject"""
-    try:
-        result = json.loads(my_str)
-    except Exception as e:
-        raise ValueError(e)
-    return result
+    #try:
+    #    result = json.loads(my_str)
+    #except Exception as e:
+    #    raise ValueError(e)
+    return json.loads(my_str)
