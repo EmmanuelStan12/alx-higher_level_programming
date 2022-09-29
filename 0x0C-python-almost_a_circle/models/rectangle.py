@@ -6,7 +6,8 @@ class Rectangle(Base):
     """this class defines a Rectangle class"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        super().__init__(id)
+        super().__init__(id) 
+        self.__run_checker(width, height, x, y)
         self.__width = width
         self.__height = height
         self.__x = x
@@ -20,6 +21,7 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """setter for width property"""
+        self.__checker("width", value)
         self.__width = value
 
     @property
@@ -30,6 +32,7 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """setter for height property"""
+        self.__checker("height", value)
         self.__height = value
 
     @property
@@ -40,6 +43,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """setter for x property"""
+        self.__checker("x", value)
         self.__x = value
 
     @property
@@ -50,4 +54,24 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """setter for y property"""
+        self.__checker("y", value)
         self.__y = value
+
+    def __run_checker(self, width, height, x, y):
+        """runs checker for all attributes"""
+        self.__checker("width", width)
+        self.__checker("height", height)
+        self.__checker("x", x)
+        self.__checker("y", y)
+
+    def __checker(self, name, value):
+        """checks for valid values of attributes"""
+
+        if type(value) != int:
+            raise TypeError("{} must be an integer".format(name))
+        if name == "height" or name == "width":
+            if value <= 0:
+                raise ValueError("{} must be > 0".format(name))
+        else:
+            if value < 0:
+                raise ValueError("{} must be >= 0".format(name))
