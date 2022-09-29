@@ -2,11 +2,12 @@
 """this module has a rectangle class"""
 from models.base import Base
 
+
 class Rectangle(Base):
     """this class defines a Rectangle class"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        super().__init__(id) 
+        super().__init__(id)
         self.__run_checker(width, height, x, y)
         self.__width = width
         self.__height = height
@@ -84,3 +85,9 @@ class Rectangle(Base):
         """prints the instance as a string of '#' characters"""
         for i in range(self.height):
             print(self.width * '#')
+
+    def __str__(self):
+        """returns the string representation of the instance"""
+        result = "[Rectangle] ({}) {}/{} - {}/{}"
+        f = result.format(self.id, self.x, self.y, self.width, self.height)
+        return f
