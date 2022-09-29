@@ -94,8 +94,15 @@ class Rectangle(Base):
         f = result.format(self.id, self.x, self.y, self.width, self.height)
         return f
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """updates the varibles of the instance"""
+        if len(args) != 0:
+            self.__update_args(args)
+        else:
+            self.__update_kwargs(kwargs)
+
+    def __update_args(self, args):
+        """updates the arguments of the instance"""
         for i in range(len(args)):
             match i:
                 case 0:
@@ -108,3 +115,10 @@ class Rectangle(Base):
                     self.x = args[i]
                 case 4:
                     self.y = args[i]
+
+    def __update_kwargs(self, kwargs):
+        """updates the variables of the instance with dictionary"""
+        keys = ['width', 'height', 'x', 'y', 'id']
+        for i, (key, value) in enumerate(kwargs.items()):
+            if key in keys:
+                setattr(self, key, value)
