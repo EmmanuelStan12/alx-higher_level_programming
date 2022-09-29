@@ -93,3 +93,18 @@ class Rectangle(Base):
         result = "[Rectangle] ({}) {}/{} - {}/{}"
         f = result.format(self.id, self.x, self.y, self.width, self.height)
         return f
+
+    def update(self, *args):
+        """updates the varibles of the instance"""
+        for i in range(len(args)):
+            match i:
+                case 0:
+                    self.id = args[i]
+                case 1:
+                    self.width = args[i]
+                case 2:
+                    self.height = args[i]
+                case 3:
+                    self.x = args[i]
+                case 4:
+                    self.y = args[i]
