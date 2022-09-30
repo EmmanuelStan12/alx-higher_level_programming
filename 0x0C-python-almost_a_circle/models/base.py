@@ -2,6 +2,7 @@
 """This module contains base class"""
 import json
 import os
+import csv
 
 
 class Base:
@@ -65,4 +66,36 @@ class Base:
             instances = []
             for item in inst_list:
                 instances.append(cls.create(**item))
-        return instances
+        return instances 
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """saves json to a csv"""
+        if list_objs is None or len(list_objs) == 0:
+            return
+        result = []
+        for inst in list_objs:
+            inst_name = "{}.csv".format(cls.__name__)
+            dict = inst.to_dictionary()
+            result.append(dict)
+        filename = "{}.csv".format(cls.__name__)
+        if cls.__name__ == "Rectangle":
+            keys = ['id', 'width', 'height', 'x', 'y']
+        with open(filename, 'w', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=result[0].keys())
+            writer.writeheader()
+            writer.writerows(result)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """returns a list of instances from a csv file"""
+        file_name = "{}.csv".format(cls.__name__)
+        if not os.path.exists(file_name):
+            return []
+        with open(file_name, 'r', encoding='utf-8') as file:
+            reader = csv.DictReader(file)
+            instances = []
+            for row in reader:
+                print(row)
+                instances.append(cls.create(**row))
+        return instances 
