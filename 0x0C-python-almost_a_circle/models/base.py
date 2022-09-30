@@ -34,3 +34,20 @@ class Base:
         json_str = Base.to_json_string(result)
         with open(inst_name, 'w', encoding='utf-8') as f:
             f.write(json_str)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """transforms a json to list of dictionaries"""
+        if json_string is None or len(json_string) == 0:
+            return []
+        return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """creates a class with dictionary attributes"""
+        if cls.__name__ == "Rectangle":
+            inst = cls(1, 1)
+        elif cls.__name__ == "Square":
+            inst = cls(1)
+        inst.update(**dictionary)
+        return inst
