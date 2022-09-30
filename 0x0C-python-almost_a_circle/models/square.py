@@ -50,3 +50,16 @@ class Square(Rectangle):
         for i, (key, value) in enumerate(kwargs.items()):
             if key in keys:
                 setattr(self, key, value)
+
+    def to_dictionary(self):
+        """transforms the square instance to a dictionary"""
+        dict = {}
+        keys = ['id', 'width', 'x', 'y']
+        for i, (k, v) in enumerate(self.__dict__.items()):
+            key = k.replace('_Rectangle__', '')
+            if key in keys:
+                if key == 'width':
+                    dict['size'] = v
+                else:
+                    dict[key] = v
+        return dict
