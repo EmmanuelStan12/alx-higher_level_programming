@@ -122,3 +122,13 @@ class Rectangle(Base):
         for i, (key, value) in enumerate(kwargs.items()):
             if key in keys:
                 setattr(self, key, value)
+
+    def to_dictionary(self):
+        """transforms the rectangle instance to a dictionary"""
+        dict = {}
+        keys = ['id', 'width', 'height', 'x', 'y']
+        for i, (k, v) in enumerate(self.__dict__.items()):
+            key = k.replace('_Rectangle__', '')
+            if key in keys:
+                dict[key] = v
+        return dict
