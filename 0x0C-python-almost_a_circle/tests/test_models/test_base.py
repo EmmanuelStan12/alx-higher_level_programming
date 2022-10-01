@@ -10,10 +10,10 @@ class TestBase(unittest.TestCase):
         """tests the id assigned to the class"""
         id = 1
         b = Base()
-        self.assertEquals(id, b.id)
+        self.assertEqual(id, b.id)
 
     def test_base_id(self):
         """tests the id assigned at instantiation"""
         id = 12
         b = Base(12)
-        self.assertEquals(id, 12)
+        self.assertEqual(id, 12)
