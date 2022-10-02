@@ -19,18 +19,32 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """converts a list of dictionaries into json"""
+        if type(list_dictionaries) != list:
+            raise TypeError('it must be a list of dictionaries')
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
+        for d in list_dictionaries:
+            if current_type == None:
+                current_d = d
+            if type(d) != dict:
+                raise TypeError('list must contain only dictionaries')
         return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
         """saves json to a file"""
+        current_type = None
+        cls_json_name = "{}.json".format(cls.__name__)
+        if type(list_objs) != list and list_objs != None:
+            raise TypeError('argument must be a list')
         if list_objs is None or len(list_objs) == 0:
+            with open(cls_json_name, 'w', encoding='utf-8') as f:
+                f.write('')
             return
         result = []
         for inst in list_objs:
-            inst_name = "{}.json".format(cls.__name__)
+            if type(inst) != cls:
+                raise TypeError('list must contain uniform instances')
             dict = inst.to_dictionary()
             result.append(dict)
         json_str = Base.to_json_string(result)
@@ -40,6 +54,8 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """transforms a json to list of dictionaries"""
+        if type(json_string) != str and json_string != None:
+            raise TypeError('argument must be a string')
         if json_string is None or len(json_string) == 0:
             return []
         return json.loads(json_string)
@@ -47,6 +63,8 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """creates a class with dictionary attributes"""
+        if type(dictionary) != dict:
+            raise TypeError("invalid type")
         if cls.__name__ == "Rectangle":
             inst = cls(1, 1)
         elif cls.__name__ == "Square":
