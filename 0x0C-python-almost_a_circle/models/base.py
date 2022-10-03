@@ -19,13 +19,11 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """converts a list of dictionaries into json"""
-        if type(list_dictionaries) != list:
+        if type(list_dictionaries) != list and list_dictionaries is not None:
             raise TypeError('it must be a list of dictionaries')
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         for d in list_dictionaries:
-            if current_type == None:
-                current_d = d
             if type(d) != dict:
                 raise TypeError('list must contain only dictionaries')
         return json.dumps(list_dictionaries)
@@ -33,9 +31,8 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """saves json to a file"""
-        current_type = None
         cls_json_name = "{}.json".format(cls.__name__)
-        if type(list_objs) != list and list_objs != None:
+        if type(list_objs) != list and list_objs is not None:
             raise TypeError('argument must be a list')
         if list_objs is None or len(list_objs) == 0:
             with open(cls_json_name, 'w', encoding='utf-8') as f:
@@ -48,13 +45,13 @@ class Base:
             dict = inst.to_dictionary()
             result.append(dict)
         json_str = Base.to_json_string(result)
-        with open(inst_name, 'w', encoding='utf-8') as f:
+        with open(cls_json_name, 'w', encoding='utf-8') as f:
             f.write(json_str)
 
     @staticmethod
     def from_json_string(json_string):
         """transforms a json to list of dictionaries"""
-        if type(json_string) != str and json_string != None:
+        if type(json_string) != str and json_string is not None:
             raise TypeError('argument must be a string')
         if json_string is None or len(json_string) == 0:
             return []
@@ -84,21 +81,24 @@ class Base:
             instances = []
             for item in inst_list:
                 instances.append(cls.create(**item))
-        return instances 
+        return instances
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """saves json to a csv"""
+        filename = "{}.csv".format(cls.__name__)
+        if type(list_objs) != list and list_objs is not None:
+            raise TypeError('argument must be a list')
         if list_objs is None or len(list_objs) == 0:
+            with open(filename, 'w', encoding='utf-8') as f:
+                f.write('')
             return
         result = []
         for inst in list_objs:
-            inst_name = "{}.csv".format(cls.__name__)
+            if type(inst) != cls:
+                raise TypeError('list must contain uniform instances')
             dict = inst.to_dictionary()
             result.append(dict)
-        filename = "{}.csv".format(cls.__name__)
-        if cls.__name__ == "Rectangle":
-            keys = ['id', 'width', 'height', 'x', 'y']
         with open(filename, 'w', encoding='utf-8') as f:
             writer = csv.DictWriter(f, fieldnames=result[0].keys())
             writer.writeheader()
@@ -114,6 +114,15 @@ class Base:
             reader = csv.DictReader(file)
             instances = []
             for row in reader:
-                print(row)
+                cls.convert_to_int(row)
                 instances.append(cls.create(**row))
-        return instances 
+        return instances
+
+    def convert_to_int(row):
+        """converts an attributes of a row to an integer"""
+        for i, (k, v) in enumerate(row.items()):
+            try:
+                n = int(v)
+                row[k] = n
+            except ValueError:
+                continue
