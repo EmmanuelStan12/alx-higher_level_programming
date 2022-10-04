@@ -14,6 +14,12 @@ class TestBase(unittest.TestCase):
         Base._Base__nb_objects = 0
         b = Base()
         self.assertEqual(1, b.id)
+        Base._Base__nb_objects = 4
+        a = Base()
+        self.assertEqual(5, a.id)
+        Base._Base__nb_objects = 20
+        c = Base()
+        self.assertEqual(21, c.id)
 
     def test_base_id(self):
         """tests the id assigned at instantiation"""
