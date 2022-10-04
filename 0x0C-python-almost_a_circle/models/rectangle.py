@@ -67,7 +67,6 @@ class Rectangle(Base):
 
     def __checker(self, name, value):
         """checks for valid values of attributes"""
-
         if type(value) != int:
             raise TypeError("{} must be an integer".format(name))
         if name == "height" or name == "width":
