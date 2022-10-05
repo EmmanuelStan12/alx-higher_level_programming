@@ -2,9 +2,7 @@
 """this module tests the base class"""
 import unittest
 from models.base import Base
-import sys
 from models.rectangle import Rectangle
-import pep8
 from models.square import Square
 
 
@@ -22,22 +20,6 @@ class TestBase(unittest.TestCase):
         Base._Base__nb_objects = 20
         c = Base()
         self.assertEqual(21, c.id)
-
-    def test_pep8_model(self):
-        """
-        tests for pep8 model
-        """
-        p8 = pep8.StyleGuide(quiet=True)
-        p = p8.check_files(['models/base.py'])
-        self.assertEqual(p.total_errors, 0, 'fix pep8')
-
-    def test_pep8_test(self):
-        """
-        tests for pep8 tests
-        """
-        p8 = pep8.StyleGuide(quiet=True)
-        p = p8.check_files(['tests/test_models/test_base.py'])
-        self.assertEqual(p.total_errors, 0, 'fix pep8')
 
     def test_base_id(self):
         """tests the id assigned at instantiation"""
