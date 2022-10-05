@@ -36,11 +36,11 @@ class Base:
             raise TypeError('argument must be a list')
         if list_objs is None or len(list_objs) == 0:
             with open(cls_json_name, 'w', encoding='utf-8') as f:
-                f.write('')
+                f.write('[]')
             return
         result = []
         for inst in list_objs:
-            if type(inst) != cls:
+            if type(inst) != cls and not issubclass(inst.__class__, cls):
                 raise TypeError('list must contain uniform instances')
             dict = inst.to_dictionary()
             result.append(dict)
@@ -95,7 +95,7 @@ class Base:
             return
         result = []
         for inst in list_objs:
-            if type(inst) != cls:
+            if type(inst) != cls and not issubclass(inst.__class__, cls):
                 raise TypeError('list must contain uniform instances')
             dict = inst.to_dictionary()
             result.append(dict)
