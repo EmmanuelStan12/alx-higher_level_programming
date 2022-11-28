@@ -9,8 +9,8 @@ if (!process.argv[2]) {
     if (num > nums[0]) {
       nums[1] = nums[0];
       nums[0] = num;
-    } else if (num > nums[1]) {
-      nums[0] = num;
+    } else if (num > nums[1] && num < nums[0]) {
+      nums[1] = num;
     }
   }
   console.log(nums[1]);
