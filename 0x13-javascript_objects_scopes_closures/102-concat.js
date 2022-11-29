@@ -7,8 +7,17 @@ const fileB = process.argv[3];
 const target = process.argv[4];
 
 fs.readFile(fileA, function (err, dataA) {
-	fs.readFile(fileB, function (err, dataB) {
-		const result = dataA + dataB;
-		fs.writeFile(target, result, function (err) {})
-	})
+  if (!err) {
+    fs.readFile(fileB, function (err, dataB) {
+      if (!err) {
+        const result = dataA + dataB;
+        fs.writeFile(target, result, function (err) {
+          if (err) {
+            console.log(err);
+          }
+        }
+        );
+      }
+    });
+  }
 });
