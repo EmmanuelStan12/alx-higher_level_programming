@@ -15,7 +15,8 @@ if __name__ == "__main__":
         host="localhost", user=user,
         port=3306, database=database, password=password)
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY states.id ASC", (query,))
+    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC",
+                (query,))
     result = cur.fetchall()
     for entry in result:
         print(entry)
