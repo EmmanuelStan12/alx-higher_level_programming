@@ -2,14 +2,13 @@
 """
 This file displays all states in mysql
 """
-import sys
-import MySQLdb
-
-user = sys.argv[1]
-password = sys.argv[2]
-database = sys.argv[3]
-
 if __name__ == "__main__":
+    import sys
+    import MySQLdb
+    user = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+
     db = MySQLdb.connect(
         host="localhost", user=user,
         port=3306, database=database, password=password)
