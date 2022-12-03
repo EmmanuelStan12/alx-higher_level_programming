@@ -1,16 +1,15 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 This file displays all states in mysql
 """
-import sys
-import MySQLdb
-
-user = sys.argv[1]
-password = sys.argv[2]
-database = sys.argv[3]
-query = sys.argv[4]
-
 if __name__ == "__main__":
+    import sys
+    import MySQLdb
+    user = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+    query = sys.argv[4]
+
     db = MySQLdb.connect(
         host="localhost", user=user,
         port=3306, database=database, password=password)
