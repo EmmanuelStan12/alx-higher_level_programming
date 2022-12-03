@@ -13,13 +13,15 @@ if __name__ == '__main__':
     user = argv[1]
     password = argv[2]
     db = argv[3]
+    query = argv[4]
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
             user, password, db))
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).order_by(State.id)\
-        .filter(State.name.like("%a%")).all()
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
+    state = session.query(State).filter_by(name=query).first()
+    if state:
+        print("{}".format(state.id))
+    else:
+        print("Not found")
     session.close()
