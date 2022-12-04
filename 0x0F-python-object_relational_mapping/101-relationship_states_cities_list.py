@@ -24,5 +24,6 @@ if __name__ == '__main__':
     for entry in result:
         print("{}: {}".format(entry.id, entry.name))
         for city in entry.cities:
-            print("\t{}: {}".format(city.id, city.name))
+            print("    {}: {}".format(city.id, city.name))
+    session.commit()
     session.close()
