@@ -6,6 +6,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
+
+
 class State(Base):
     """
     States class: inherits from base links to MySQL table states

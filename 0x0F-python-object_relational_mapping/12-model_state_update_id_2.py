@@ -15,12 +15,10 @@ if __name__ == '__main__':
     db = argv[3]
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
             user, password, db))
-    Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    l_state = State(name='Louisiana')
-    session.add(l_state)
+    state = session.query(State).filter_by(id=2).first()
+    state.name = 'New Mexico'
     session.commit()
-    print("{}".format(l_state.id))
     session.close()
