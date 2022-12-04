@@ -9,7 +9,6 @@ if __name__ == '__main__':
     from sqlalchemy import create_engine
     from relationship_state import Base, State
     from relationship_city import City
-    from sqlalchemy.ext.declarative import declarative_base
 
     user = argv[1]
     password = argv[2]
