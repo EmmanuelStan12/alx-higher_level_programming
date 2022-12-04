@@ -14,7 +14,7 @@ if __name__ == "__main__":
         port=3306, database=database, password=password)
     cur = db.cursor()
     cur.execute("SELECT c.id, c.name, s.name FROM cities AS c"
-                " INNER JOIN states AS s ON c.state_id = "
+                " LEFT OUTER JOIN states AS s ON c.state_id = "
                 "s.id ORDER BY c.id ASC")
     result = cur.fetchall()
     for entry in result:

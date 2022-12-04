@@ -14,7 +14,7 @@ if __name__ == "__main__":
         port=3306, database=database, password=password)
     cur = db.cursor()
     cur.execute("SELECT * FROM states WHERE"
-                " name LIKE 'N%' ORDER BY states.id ASC")
+                " name LIKE BINARY 'N%' ORDER BY states.id ASC")
     result = cur.fetchall()
     for entry in result:
         print(entry)

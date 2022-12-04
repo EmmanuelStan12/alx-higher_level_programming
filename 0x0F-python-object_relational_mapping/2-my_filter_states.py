@@ -15,7 +15,7 @@ if __name__ == "__main__":
         port=3306, database=database, password=password)
     cur = db.cursor()
     cur.execute("SELECT * FROM states WHERE name"
-                " = '{:s}' ORDER BY states.id ASC".format(query))
+                " LIKE '{:s}' ORDER BY states.id ASC".format(query))
     result = cur.fetchall()
     for entry in result:
         print(entry)
