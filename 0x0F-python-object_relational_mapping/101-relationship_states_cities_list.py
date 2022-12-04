@@ -7,7 +7,8 @@ if __name__ == '__main__':
     from sys import argv
     from sqlalchemy.orm import sessionmaker
     from sqlalchemy import create_engine
-    from model_state import Base, State
+    from relationship_state import Base, State
+    from relationship_city import City
     from sqlalchemy.ext.declarative import declarative_base
 
     user = argv[1]
@@ -16,9 +17,13 @@ if __name__ == '__main__':
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
             user, password, db))
 
+    Base.metadata.create_all(engine)
+
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).filter(State.name.like('%a%'))\
-        .delete(synchronize_session='fetch')
-    session.commit()
+    result = session.query(State).order_by(State.id).all()
+    for entry in result:
+        print("{}: {}".format(entry.id, entry.name))
+        for city in entry.cities:
+            print("\t{}: {}".format(city.id, city.name))
     session.close()

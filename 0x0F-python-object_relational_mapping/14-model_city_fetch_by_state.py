@@ -21,9 +21,9 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
     State.cities = relationship('City', order_by=City.id,
-            back_populates='state')
+                                back_populates='state')
     result = session.query(State, City).\
-            filter(City.state_id == State.id).all()
+        filter(City.state_id == State.id).all()
     for row in result:
         print("{}: ({}) {}".format(row[0].name, row[0].id, row[1].name))
     session.close()
