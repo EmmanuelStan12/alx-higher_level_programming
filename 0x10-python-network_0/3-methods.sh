@@ -1,3 +1,3 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Takes a url and displays the output
-curl -sL -X OPTIONS "$1"
+curl -sI "$1" | grep "Allow" | cut -d' ' -f2-

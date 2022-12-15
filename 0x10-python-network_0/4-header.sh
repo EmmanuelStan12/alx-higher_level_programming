@@ -1,4 +1,3 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Takes a url and displays the output
-curl -sL -X GET "$1" \
-	-H "X-School-User-id: 98"
+curl -s -X "GET" -H "X-School-User-id: 98" "$1"
