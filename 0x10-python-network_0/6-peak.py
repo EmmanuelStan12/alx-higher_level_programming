@@ -12,16 +12,18 @@ def find_peak(list_of_integers):
     if len(list_of_integers) == 1:
         return list_of_integers[0]
     nums = list_of_integers
-    last_index= len(nums) - 1
-    i = 0
-    max = nums[i]
-    while i <= last_index:
-        if i == last_index and nums[i] > max:
-            max = nums[i]
-        elif nums[i] >= nums[last_index] and nums[i] >= max:
-            max = nums[i]
-        elif nums[i] < nums[last_index] and nums[last_index] >= max:
-            max = nums[last_index]
-        i = i + 1
-        last_index = last_index - 1
-    return max
+    f = int(len(nums) / 2) - 1
+    l = int(len(nums) / 2)
+    while l < len(nums):
+        if f == 0 and nums[f] > nums[f + 1]:
+            return nums[f]
+        elif l == len(nums) - 1 and nums[l] >= nums[l - 1]:
+            return nums[l]
+        elif f > 0:
+            if nums[f] > nums[f + 1] and nums[f] >= nums[f - 1]:
+                return nums[f]
+        if nums[l] > nums[l - 1] and nums[l] >= nums[l + 1]:
+            return nums[l]
+        l = l + 1
+        f = f - 1
+    return None
