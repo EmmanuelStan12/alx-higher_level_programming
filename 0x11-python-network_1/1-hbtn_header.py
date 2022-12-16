@@ -19,4 +19,4 @@ def fetch(url):
 if __name__ == '__main__':
     url = sys.argv[1]
     headers = fetch(url)
-    print(headers['X-Request-Id'])
+    print(headers.get('X-Request-Id'))

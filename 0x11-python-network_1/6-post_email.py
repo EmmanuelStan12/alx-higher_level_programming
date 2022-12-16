@@ -17,5 +17,5 @@ def post_email(url, email):
 if __name__ == '__main__':
     url = sys.argv[1]
     email = sys.argv[2]
-    result = post_email(url, email).decode('utf-8')
+    result = post_email(url, email)
     print(result.text)

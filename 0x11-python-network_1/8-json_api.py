@@ -18,7 +18,7 @@ def search(query, url):
             return "No result"
         else:
             return "[{}] {}".format(id, name)
-    except:
+    except e:
         return "Not a valid JSON"
 
 
