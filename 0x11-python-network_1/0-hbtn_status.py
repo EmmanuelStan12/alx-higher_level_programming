@@ -13,6 +13,7 @@ def fetch(url):
         result = response.read()
     return result
 
+
 if __name__ == '__main__':
     response = fetch('https://alx-intranet.hbtn.io/status')
     print("Body response:")
