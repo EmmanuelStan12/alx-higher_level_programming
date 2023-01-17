@@ -6,14 +6,19 @@ if (process.argv.length > 2) {
   const movieId = process.argv[2];
   const endpoint = 'https://swapi-api.alx-tools.com/api/films/';
   const url = endpoint + movieId;
-  // const result = {};
+  const result = {};
   request.get(url, function (err, response, body) {
     if (err) throw err;
     const data = JSON.parse(body);
     data.characters.forEach((ch, i) => {
       request.get(ch, function (e, res, b) {
         if (e) throw e;
-        console.log(JSON.parse(b).name);
+        result[i] = JSON.parse(b).name;
+        if (i == data.characters.length - 1) {
+          for (let p in result) {
+            console.log(result[p]);
+	  }
+	}
       });
     });
   });
