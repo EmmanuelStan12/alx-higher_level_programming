@@ -14,11 +14,11 @@ if (process.argv.length > 2) {
       request.get(ch, function (e, res, b) {
         if (e) throw e;
         result[i] = JSON.parse(b).name;
-        if (i == data.characters.length - 1) {
-          for (let p in result) {
+        if (Object.keys(result).length === data.characters.length) {
+          for (const p in result) {
             console.log(result[p]);
-	  }
-	}
+          }
+        }
       });
     });
   });
